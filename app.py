@@ -1,20 +1,24 @@
 from flask import Flask, render_template
+from pymongo import MongoClient
 import random
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 app = Flask(__name__)
 
-quotes = [
-    "Believe you can and you're halfway there.",
-    "Success is not final, failure is not fatal.",
-    "Dream big and dare to fail.",
-    "Do one thing every day that scares you.",
-    "Opportunities don't happen, you create them."
-]
+# Connect to MongoDB
+client = MongoClient(os.getenv("MONGO_URI"))
+db = client["quote_db"]
+collection = db["quotes"]
 
 @app.route("/")
 def home():
-    quote = random.choice(quotes)
+    quotes = list(collection.find({}, {"_id": 0, "text": 1}))
+    quote = random.choice(quotes)["text"] if quotes else "No quotes available."
     return render_template("index.html", quote=quote)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
