@@ -2,24 +2,43 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Daily Quote Generator</title>
+    <title>✨ Your Daily Quote ✨</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
       rel="stylesheet"
       href="{{ url_for('static', filename='style.css') }}"
     />
+
+    <!-- Google AdSense Verification -->
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2941172698465327"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
     <div class="container">
       <h1>✨ Your Daily Quote ✨</h1>
       <p class="quote">{{ quote }}</p>
 
-      <!-- Google AdSense slot -->
-      <div class="ad-slot">
-        <!-- Replace with your AdSense code -->
-        <p>[Ad will appear here]</p>
+      <!-- AdSense Ad Slot -->
+      <div class="ad-container">
+        <ins
+          class="adsbygoogle"
+          style="display: block"
+          data-ad-client="ca-pub-2941172698465327"
+          data-ad-slot="1234567890"
+          data-ad-format="auto"
+          data-full-width-responsive="true"
+        ></ins>
+        <script>
+          (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
       </div>
 
-      <button onclick="window.location.reload()">Get Another Quote</button>
+      <form method="get" action="/">
+        <button type="submit">Get Another Quote</button>
+      </form>
     </div>
   </body>
 </html>
