@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Daily Quote Generator</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1>✨ Your Daily Quote ✨</h1>
+      <p class="quote">{{ quote }}</p>
+
+      <!-- Google AdSense slot -->
+      <div class="ad-slot">
+        <!-- Replace with your AdSense code -->
+        <p>[Ad will appear here]</p>
+      </div>
+
+      <button onclick="window.location.reload()">Get Another Quote</button>
+    </div>
+  </body>
+</html>
